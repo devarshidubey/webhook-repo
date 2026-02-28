@@ -3,7 +3,6 @@ import os
 
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret')
     MONGO_URI = os.environ.get('MONGO_URI')
     
     _raw_origins = os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:4100,http://0.0.0.0:4100')
