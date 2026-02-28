@@ -15,6 +15,9 @@ def webhook():
     if payload is None:
         raise InvalidUsage.invalid_payload()
     
+    if event_type == 'ping':
+        return jsonify({'message': 'pong'}), 200
+    
     try:
         data = parse_event(payload, event_type)
     except (KeyError, ValueError):
