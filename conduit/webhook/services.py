@@ -1,4 +1,5 @@
 from conduit.extensions import mongo
+from conduit.utils import nomrmalize_timestamp
 
 def parse_event(payload, event_type):
     if event_type == 'push':
@@ -8,7 +9,7 @@ def parse_event(payload, event_type):
             'action': 'PUSH',
             'from_branch': None,
             'to_branch': payload['ref'].replace('refs/heads/', ''),
-            'timestamp': payload['head_commit']['timestamp'],
+            'timestamp': normalize_timestamp(payload['head_commit']['timestamp']),
         }
 
     elif event_type == 'pull_request':
@@ -21,7 +22,7 @@ def parse_event(payload, event_type):
             'action': 'MERGE' if merged else 'PULL_REQUEST',
             'from_branch': pr['head']['ref'],
             'to_branch': pr['base']['ref'],
-            'timestamp': pr['updated_at'],
+            'timestamp': normalize_timestamp(pr['updated_at']),
         }
 
 def save_event(data):
