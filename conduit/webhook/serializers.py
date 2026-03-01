@@ -1,5 +1,6 @@
 from marshmallow import Schema, fields, validate, ValidationError
 
+#Added this for another layer of sanitation as MongoDB is schemaless
 class EventSchema(Schema):
     request_id = fields.Str(required=True)
     author = fields.Str(required=True)

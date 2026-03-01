@@ -4,7 +4,7 @@ from conduit.extensions import cors, mongo
 from conduit.exceptions import InvalidUsage
 
 def create_app(config_object):
-    #applicationf actory
+    #application factory
 
     app = Flask(__name__.split('.')[0])
     app.url_map.strict_slashes = False
@@ -21,20 +21,20 @@ def register_extensions(app):
     mongo.init_app(app)
 
 def register_blueprints(app):
-    #cors placeholder
     origins = app.config.get('CORS_ORIGIN_WHITELIST', '*')
-    cors.init_app(app, origins=origins)
+    cors.init_app(app, origins=origins) #to protect the Web API: GET /events
 
     app.register_blueprint(webhook.views.blueprint)
 
 def register_commands(app):
+    #Commands to oraganize and test durign dev
     app.cli.add_command(commands.test)
     app.cli.add_command(commands.lint)
     app.cli.add_command(commands.clean)
     app.cli.add_command(commands.urls)
 
 def register_errorhandlers(app):
-
+    
     def errorhandler(error):
         response = error.to_json()
         response.status_code = error.status_code

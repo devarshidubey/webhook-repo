@@ -7,6 +7,7 @@ blueprint = Blueprint('webhooks', __name__)
 
 @blueprint.route('/webhook/receiver', methods=['POST'])
 def webhook():
+    #The github headers need to be verified before processing the request
     event_type = request.headers.get('X-Github-Event')
     if not event_type:
         raise InvalidUsage.unauthorized()
@@ -15,7 +16,7 @@ def webhook():
     if payload is None:
         raise InvalidUsage.invalid_payload()
     
-    if event_type == 'ping':
+    if event_type == 'ping': #This was added to allow the webhook integration with github: sends a ping as the first event
         return jsonify({'message': 'pong'}), 200
     
     try:
