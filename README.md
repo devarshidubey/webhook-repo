@@ -2,7 +2,7 @@
 
 A Flask + MongoDB webhook receiver that captures GitHub events (Push, Pull Request, Merge) from [action-repo](https://github.com/devarshidubey/action-repo), stores them in MongoDB Atlas, and exposes an API for the UI to poll.
 
-**Live URL:** `https://webhook-repo-nfnj.onrender.com`
+**Live URL:** [`https://webhook-repo-nfnj.onrender.com`](https://webhook-repo-nfnj.onrender.com)
 
 ---
 
