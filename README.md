@@ -2,6 +2,8 @@
 
 A Flask + MongoDB webhook receiver that captures GitHub events (Push, Pull Request, Merge) from [action-repo](https://github.com/devarshidubey/action-repo), stores them in MongoDB Atlas, and exposes an API for the UI to poll.
 
+**Live URL:** `https://webhook-repo-nfnj.onrender.com`
+
 ---
 
 ## Architecture
@@ -181,8 +183,7 @@ Deployed on **Render** using Docker.
 2. Render automatically builds the Docker image and redeploys
 3. Environment variables are configured in the Render dashboard
 
-**Live URL:** `https://webhook-repo-nfnj.onrender.com`
-
+Alternatively you can use your own Docker Image to deploy, this is a safer approach because if the image works on your PC it will work in production.
 ---
 
 ## Setting Up the GitHub Webhook
