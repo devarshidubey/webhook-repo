@@ -182,7 +182,6 @@ Deployed on **Render** using Docker.
 1. Push to `main` branch
 2. Render automatically builds the Docker image and redeploys
 3. Environment variables are configured in the Render dashboard
-
 Alternatively you can use your own Docker Image to deploy, this is a safer approach because if the image works on your PC it will work in production.
 ---
 
