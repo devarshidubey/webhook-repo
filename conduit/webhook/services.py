@@ -1,5 +1,5 @@
 from conduit.extensions import mongo
-from conduit.utils import nomrmalize_timestamp
+from conduit.utils import normalize_timestamp
 
 def parse_event(payload, event_type):
     if event_type == 'push':
@@ -31,7 +31,7 @@ def save_event(data):
 def get_latest_events(after_timestamp = None):
     query = {}
     if after_timestamp:
-        query = { 'timestamp': { '$gte': after_timestamp } }
+        query = { 'timestamp': { '$gt': after_timestamp } }
     
     return list(
         mongo.db.events
